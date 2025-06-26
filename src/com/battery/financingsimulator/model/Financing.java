@@ -6,6 +6,7 @@ package com.battery.financingsimulator.model;
  * and annual interest rate.
  */
 public class Financing {
+	
 	private final double propertyValue;
 	private final int loanTermYears;
 	private final double annualInterestRate;

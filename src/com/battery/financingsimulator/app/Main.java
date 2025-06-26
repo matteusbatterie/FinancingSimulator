@@ -35,7 +35,15 @@ public class Main {
 
 				switch (choice) {
 					case 1:
-						financings.add(new House(propertyValue, loanTerm, interestRate));
+						// For House, we need to mock built area and land size
+						// as they are not provided by the user in this simulation.
+						final double MOCKED_BUILT_AREA = 150.0;
+						final double MOCKED_LAND_SIZE = 250.0;
+						System.out.println("-> Using default values for built area and land size:");
+						System.out.printf("Built Area: %.2f m², Land Size: %.2f m²%n", MOCKED_BUILT_AREA, MOCKED_LAND_SIZE);
+						
+						financings.add(
+								new House(propertyValue, loanTerm, interestRate, MOCKED_BUILT_AREA, MOCKED_LAND_SIZE));
 						break;
 					case 2:
 						financings.add(new Apartment(propertyValue, loanTerm, interestRate));

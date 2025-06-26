@@ -1,5 +1,6 @@
 package com.battery.financingsimulator.ui;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -13,13 +14,19 @@ public class UserInputHandler {
 	}
 
 	/**
+	 * Closes the scanner to release resources.
+	 */
+	public void close() {
+		scanner.close();
+	}
+
+	/**
 	 * Prompts the user to enter the property value.
 	 * 
 	 * @return the property value entered by the user
 	 */
 	public double askPropertyValue() {
-		System.out.print("Enter the property value: $");
-		return scanner.nextDouble();
+		return readDouble("Enter the property value: $");
 	}
 
 	/**
@@ -28,8 +35,7 @@ public class UserInputHandler {
 	 * @return the loan term in years entered by the user
 	 */
 	public int askLoanTerm() {
-		System.out.print("Enter the loan term (in years): ");
-		return scanner.nextInt();
+		return readInt("Enter the loan term (in years): ");
 	}
 
 	/**
@@ -38,11 +44,42 @@ public class UserInputHandler {
 	 * @return the annual interest rate entered by the user
 	 */
 	public double askInterestRate() {
-		System.out.print("Enter the annual interest rate (%): ");
-		return scanner.nextDouble();
+		return readDouble("Enter the annual interest rate (%): ");
 	}
 
-	public void closeScanner() {
-		scanner.close();
+	/**
+	 * Reads a double value from the user with a prompt.
+	 * 
+	 * @param prompt the message to display to the user
+	 * @return the double value entered by the user
+	 */
+	public double readDouble(String prompt) {
+		while (true) {
+			System.out.print(prompt);
+			try {
+				return scanner.nextDouble();
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid input. Please enter a number.");
+				scanner.next();
+			}
+		}
+	}
+
+	/**
+	 * Reads an integer value from the user with a prompt.
+	 * 
+	 * @param prompt the message to display to the user
+	 * @return the integer value entered by the user
+	 */
+	public int readInt(String prompt) {
+		while (true) {
+			System.out.print(prompt);
+			try {
+				return scanner.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid input. Please enter an integer.");
+				scanner.next();
+			}
+		}
 	}
 }

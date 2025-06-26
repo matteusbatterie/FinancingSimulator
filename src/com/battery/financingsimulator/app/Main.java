@@ -47,6 +47,8 @@ public class Main {
 								new House(propertyValue, loanTerm, interestRate, MOCKED_BUILT_AREA, MOCKED_LAND_SIZE));
 						break;
 					case 2:
+						// For Apartment, we need to mock parking spaces and floor number
+						// as they are not provided by the user in this simulation.
 						final int MOCKED_PARKING_SPACES = 2;
 						final int MOCKED_FLOOR_NUMBER = 10;
 						System.out.println("-> Using default values for parking spaces and floor number:");

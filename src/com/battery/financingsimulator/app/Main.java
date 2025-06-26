@@ -20,6 +20,7 @@ public class Main {
 			System.out.println("0. Display All Simulations & Exit");
 			System.out.println("1. Simulate House Financing");
 			System.out.println("2. Simulate Apartment Financing");
+			System.out.println("3. Simulate Land Financing");
 
 			int choice = ui.readInt("Enter your choice: ");
 
@@ -38,6 +39,9 @@ public class Main {
 						break;
 					case 2:
 						financings.add(new Apartment(propertyValue, loanTerm, interestRate));
+						break;
+					case 3:
+						financings.add(new Land(propertyValue, loanTerm, interestRate));
 						break;
 					default:
 						System.out.println("Invalid option. Please try again.");

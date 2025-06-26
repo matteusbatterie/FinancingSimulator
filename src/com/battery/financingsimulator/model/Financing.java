@@ -51,6 +51,12 @@ public abstract class Financing {
 		return this.calculateMonthlyPayment() * this.getLoanTermMonths();
 	}
 
+	/**
+	 * Returns a string representation of the financing model, including property
+	 * value, total payment, and monthly payment.
+	 *
+	 * @return A formatted string with financing details.
+	 */
 	@Override
 	public String toString() {
 		return String.format("Property Value: $%,.2f\n" +

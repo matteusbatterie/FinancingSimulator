@@ -7,8 +7,24 @@ package com.battery.financingsimulator.model;
  */
 public class Apartment extends Financing {
 
-	public Apartment(double propertyValue, int loanTermYears, double annualInterestRate) {
+	private final int parkingSpaces;
+	private final int floorNumber;
+
+	public Apartment(double propertyValue, int loanTermYears, double annualInterestRate, int parkingSpaces,
+			int floorNumber) {
 		super(propertyValue, loanTermYears, annualInterestRate);
+
+		this.parkingSpaces = parkingSpaces;
+		this.floorNumber = floorNumber;
+	}
+
+	// Getters
+	public int getParkingSpaces() {
+		return this.parkingSpaces;
+	}
+
+	public int getFloorNumber() {
+		return this.floorNumber;
 	}
 
 	/**
@@ -48,4 +64,14 @@ public class Apartment extends Financing {
 		return numerator / denominator;
 	}
 
+	@Override
+	public String toString() {
+		String baseInfo = super.toString();
+		String specificInfo = String.format("Parking Spaces: %d\n" +
+				"Floor Number: %d",
+				this.getParkingSpaces(),
+				this.getFloorNumber());
+
+		return baseInfo + "\n" + specificInfo;
+	}
 }

@@ -53,9 +53,8 @@ public class House extends Financing {
 	@Override
 	public String toString() {
 		String baseInfo = super.toString();
-		String specificInfo = String.format(
-				"Built Area: %.2f m²\n" +
-						"Land Size: %.2f m²",
+		String specificInfo = String.format("Built Area: %.2f m²\n" +
+				"Land Size: %.2f m²",
 				this.getBuiltArea(),
 				this.getLandSize());
 

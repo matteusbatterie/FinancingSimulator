@@ -21,7 +21,10 @@ public class House extends Financing {
 	 */
 	@Override
 	public double calculateMonthlyPayment() {
-		double basePayment = super.calculateMonthlyPayment();
+		double monthlyAmortization = this.getPropertyValue() / this.getLoanTermMonths();
+		double monthlyInterestFactor = 1 + (this.getAnnualInterestRateDecimal() / 12.0);
+		double basePayment = monthlyAmortization * monthlyInterestFactor;
+		
 		return basePayment + INSURANCE_FEE;
 	}
 }

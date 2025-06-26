@@ -1,12 +1,12 @@
 package com.battery.financingsimulator.model;
 
 /**
- * Represents a financing model for a property, including calculations for
- * monthly payments and total payments based on the property value, loan term,
- * and annual interest rate.
+ * Represents a financing model for properties, serving as a base class for
+ * specific financing types like House and Land. This class encapsulates common
+ * properties and methods related to property financing.
  */
-public class Financing {
-	
+public abstract class Financing {
+
 	private final double propertyValue;
 	private final int loanTermYears;
 	private final double annualInterestRate;
@@ -39,18 +39,13 @@ public class Financing {
 	}
 
 	/**
-	 * Calculates the monthly payment based on the property value, loan term, and
-	 * annual interest rate. This is a simplified formula; real calculations would
-	 * involve more complex interest calculations.
-	 * 
-	 * @return the monthly payment amount
+	 * Abstract method to calculate the monthly payment for the financing model.
+	 * This method must be implemented by subclasses to provide specific payment
+	 * calculations.
+	 *
+	 * @return The calculated monthly payment.
 	 */
-	public double calculateMonthlyPayment() {
-		double monthlyAmortization = this.getPropertyValue() / this.getLoanTermMonths();
-		double monthlyInterestFactor = 1 + (this.getAnnualInterestRateDecimal() / 12.0);
-
-		return monthlyAmortization * monthlyInterestFactor;
-	}
+	public abstract double calculateMonthlyPayment();
 
 	public double calculateTotalPayment() {
 		return this.calculateMonthlyPayment() * this.getLoanTermMonths();

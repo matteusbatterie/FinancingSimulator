@@ -1,5 +1,10 @@
 package com.battery.financingsimulator.model;
 
+/**
+ * Represents a financing model for a property, including calculations for
+ * monthly payments and total payments based on the property value, loan term,
+ * and annual interest rate.
+ */
 public class Financing {
 	private final double propertyValue;
 	private final int loanTermYears;

@@ -8,8 +8,16 @@ public class Land extends Financing {
 
 	private static final double RISK_SURCHARGE_FACTOR = 1.02;
 
-	public Land(double propertyValue, int loanTermYears, double annualInterestRate) {
+	private final ZoneType zoneType;
+
+	public Land(double propertyValue, int loanTermYears, double annualInterestRate, ZoneType zoneType) {
 		super(propertyValue, loanTermYears, annualInterestRate);
+		this.zoneType = zoneType;
+	}
+
+	// Getters
+	public ZoneType getZoneType() {
+		return this.zoneType;
 	}
 
 	/**
@@ -25,5 +33,15 @@ public class Land extends Financing {
 		double basePayment = monthlyAmortization * monthlyInterestFactor;
 
 		return basePayment * RISK_SURCHARGE_FACTOR;
+	}
+
+	@Override
+	public String toString() {
+		String baseInfo = super.toString();
+		String specificInfo = String.format(
+				"Zone Type: %s",
+				this.getZoneType().getDescription());
+
+		return baseInfo + "\n" + specificInfo;
 	}
 }

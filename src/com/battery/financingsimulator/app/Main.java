@@ -40,16 +40,26 @@ public class Main {
 						final double MOCKED_BUILT_AREA = 150.0;
 						final double MOCKED_LAND_SIZE = 250.0;
 						System.out.println("-> Using default values for built area and land size:");
-						System.out.printf("Built Area: %.2f m², Land Size: %.2f m²%n", MOCKED_BUILT_AREA, MOCKED_LAND_SIZE);
-						
+						System.out.printf("Built Area: %.2f m², Land Size: %.2f m²%n", MOCKED_BUILT_AREA,
+								MOCKED_LAND_SIZE);
+
 						financings.add(
 								new House(propertyValue, loanTerm, interestRate, MOCKED_BUILT_AREA, MOCKED_LAND_SIZE));
 						break;
 					case 2:
-						financings.add(new Apartment(propertyValue, loanTerm, interestRate));
+						final int MOCKED_PARKING_SPACES = 2;
+						final int MOCKED_FLOOR_NUMBER = 10;
+						System.out.println("-> Using default values for parking spaces and floor number:");
+						System.out.printf("Parking Spaces: %d, Floor Number: %d%n", MOCKED_PARKING_SPACES,
+								MOCKED_FLOOR_NUMBER);
+
+						financings.add(new Apartment(propertyValue, loanTerm, interestRate,
+								MOCKED_PARKING_SPACES, MOCKED_FLOOR_NUMBER));
 						break;
 					case 3:
-						financings.add(new Land(propertyValue, loanTerm, interestRate));
+
+						System.out.println("-> Using default value for zone type (Residential).");
+						financings.add(new Land(propertyValue, loanTerm, interestRate, ZoneType.RESIDENTIAL));
 						break;
 					default:
 						System.out.println("Invalid option. Please try again.");
